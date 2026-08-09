@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaveesha Sanjana - Sri Lankan Singer</title>
+    
+    <!-- Browser Tab / Title Bar Logo (Favicon) -->
+    <link rel="icon" type="image/png" href="232.jpg">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* General Resets & Smooth Scroll */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #0d0d0f;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Glowing Background Spheres */
+        .bg-glow-1, .bg-glow-2 {
+            position: fixed;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: rgba(255, 51, 102, 0.15);
+            filter: blur(120px);
+            z-index: -1;
+            pointer-events: none;
+            animation: floatGlow 10s infinite alternate ease-in-out;
+        }
+
+        .bg-glow-1 { top: -50px; left: -50px; }
+        .bg-glow-2 { bottom: 10%; right: -50px; background: rgba(0, 153, 255, 0.12); }
+
+        @keyframes floatGlow {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(40px, 50px) scale(1.15); }
+        }
+
+        /* Fixed Social Media Bar (Right Side) */
+        .social-sidebar {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .social-sidebar a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            color: #fff;
+            text-decoration: none;
+            font-size: 20px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .social-sidebar a:hover {
+            transform: scale(1.2) translateX(-5px);
+            box-shadow: 0 0 20px currentColor;
+        }
+
+        .social-sidebar .youtube { background-color: #ff0000; }
+        .social-sidebar .instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        .social-sidebar .facebook { background-color: #1877f2; }
+
+        /* Header Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+            background-color: rgba(18, 18, 20, 0.85);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .profile-img {
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ff3366;
+            box-shadow: 0 0 10px rgba(255, 51, 102, 0.5);
+            transition: transform 0.3s;
+        }
+
+        .brand-logo:hover .profile-img {
+            transform: rotate(360deg);
+        }
+
+        .brand-name {
+            font-size: 20px;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-name span {
+            color: #ff3366;
+            text-shadow: 0 0 10px rgba(255, 51, 102, 0.5);
+        }
+
+        nav a {
+            color: #ccc;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 5px;
+            transition: color 0.3s;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #ff3366;
+            transition: width 0.3s;
+            box-shadow: 0 0 8px #ff3366;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 70vh;
+            background: linear-gradient(rgba(13, 13, 15, 0.75), rgba(13, 13, 15, 0.95)), 
+                        url('https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1200') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 0 8%;
+            position: relative;
+        }
+
+        .hero-text {
+            max-width: 650px;
+            text-align: left;
+        }
+
+        .hero-text .welcome-tag {
+            color: #ff3366;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero-text h1 {
+            font-size: 68px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .hero-text h1 span {
+            color: #ff3366;
+            background: linear-gradient(45deg, #ff3366, #ff6584);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            color: #bbbbbb;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 14px 34px;
+            background: linear-gradient(45deg, #ff3366, #ff1a53);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 20px rgba(255, 51, 102, 0.4);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(255, 51, 102, 0.7);
+        }
+
+        /* Section Container */
+        .container {
+            padding: 70px 8%;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 36px;
+            color: #ffffff;
+            position: relative;
+            display: table;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50%;
+            height: 3px;
+            background: #ff3366;
+            margin: 8px auto 0 auto;
+            border-radius: 2px;
+            box-shadow: 0 0 10px #ff3366;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 45px;
+            font-size: 16px;
+        }
+
+        /* Audio Cards Grid Layout */
+        .beat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .beat-card {
+            background: rgba(26, 26, 30, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 22px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .beat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 51, 102, 0.4);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .beat-card.playing {
+            border-color: #ff3366;
+            box-shadow: 0 0 25px rgba(255, 51, 102, 0.4);
+        }
+
+        .card-top {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .album-art {
+            width: 85px;
+            height: 85px;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .track-details {
+            flex-grow: 1;
+        }
+
+        .track-details h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .track-details p {
+            font-size: 13px;
+            color: #888888;
+        }
+
+        /* Animated Music Equalizer Wave */
+        .wave-container {
+            display: none;
+            align-items: flex-end;
+            gap: 3px;
+            height: 15px;
+            margin-top: 5px;
+        }
+
+        .beat-card.playing .wave-container {
+            display: flex;
+        }
+
+        .wave-bar {
+            width: 3px;
+            height: 100%;
+            background-color: #ff3366;
+            border-radius: 3px;
+            animation: wave 0.8s infinite ease-in-out alternate;
+        }
+
+        .wave-bar:nth-child(2) { animation-delay: 0.2s; }
+        .wave-bar:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes wave {
+            0% { height: 20%; }
+            100% { height: 100%; }
+        }
+
+        .play-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff3366, #ff1a53);
+            border: none;
+            color: white;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(255, 51, 102, 0.4);
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 18px rgba(255, 51, 102, 0.8);
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background-color: #2a2a30;
+            border-radius: 3px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #ff3366, #ff6584);
+            border-radius: 3px;
+            transition: width 0.1s linear;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            .hero-text h1 {
+                font-size: 44px;
+            }
+        }
+
+        .contact-info-card {
+            background: rgba(22, 22, 26, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-info-card .logo-box {
+            background-color: #0d0d0d;
+            border: 2px solid #ff3366;
+            width: 95px;
+            height: 95px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(255, 51, 102, 0.3);
+        }
+
+        .contact-info-card .logo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .contact-info-card h3 {
+            color: #ff3366;
+            font-size: 22px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            color: #ccc;
+            font-size: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .contact-item i {
+            color: #ff3366;
+            font-size: 18px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            background: rgba(22, 22, 26, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 14px 18px;
+            color: #fff;
+            font-size: 15px;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            border-color: #ff3366;
+            box-shadow: 0 0 12px rgba(255, 51, 102, 0.3);
+        }
+
+        .send-btn {
+            background: linear-gradient(45deg, #ff3366, #ff1a53);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s;
+            margin-top: 5px;
+            box-shadow: 0 4px 15px rgba(255, 51, 102, 0.4);
+        }
+
+        .send-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 51, 102, 0.7);
+        }
+
+        /* About Section */
+        .about-section {
+            background: rgba(22, 22, 26, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            max-width: 1100px;
+            margin: 30px auto;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .about-section p {
+            color: #ccc;
+            font-size: 17px;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #08080a;
+            padding: 60px 8% 30px 8%;
+            margin-top: 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-brand h2 {
+            color: #ff3366;
+            font-size: 32px;
+            font-weight: 800;
+            text-align: left;
+            margin-bottom: 5px;
+        }
+
+        .footer-brand p {
+            color: #aaaaaa;
+            font-size: 15px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .footer-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ff3366;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .footer-socials a {
+            color: #ffffff;
+            font-size: 20px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-socials a:hover {
+            color: #ff3366;
+            transform: translateY(-3px) scale(1.2);
+        }
+
+        .footer-divider {
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.08);
+            width: 100%;
+            margin-bottom: 25px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            color: #777777;
+            font-size: 14px;
+        }
+
+        .footer-bottom a {
+            color: #777777;
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Glow Spheres -->
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+
+    <!-- Social Media Side Bar -->
+    <div class="social-sidebar">
+        <a href="https://youtube.com/@gaveesha_sanjana.artist?si=tnrZ_nQsnLdDv1z-" target="_blank" class="youtube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.instagram.com/gaveesha_sanjana.artist/?hl=en" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@gaveesha_sanjana.artist?is_from_webapp=1&sender_device=pc" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i></a>
+    </div>
+
+    <!-- Header Navigation -->
+    <header>
+        <a href="#home" class="brand-logo">
+            <img src="232.jpg" width="50" height="50" alt="Gaveesha Sanjana" class="profile-img">
+            <span class="brand-name">Gaveesha <span>Sanjana</span></span>
+        </a>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#beats">Songs</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Hero Banner -->
+    <section id="home" class="hero">
+        <div class="hero-text">
+            <div class="welcome-tag">Welcome to the world of</div>
+            <h1>Gaveesha <span>Sanjana</span></h1>
+            <p>Sri Lankan singer, editor and sokian ( G/Dharmasoka College ). Stay with us for listen new songs.</p>
+            <a href="#beats" class="btn"><i class="fas fa-play"></i> Explore My Songs</a>
+        </div>
+    </section>
+
+    <!-- Beats Grid Section -->
+    <section id="beats" class="container">
+        <h2>My Songs</h2>
+        <p class="section-subtitle">Listen to my songs below</p>
+        <div class="beat-grid">
+            
+            <!-- Song Card 1 -->
+            <div class="beat-card">
+                <div class="card-top">
+                    <img src="song.png" alt="Oya Dasa" class="album-art">
+                    <div class="track-details">
+                        <h3>Oya Dasa</h3>
+                        <p>Duration: 4:15</p>
+                        <!-- Animated Music Waves -->
+                        <div class="wave-container">
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                        </div>
+                    </div>
+                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar"></div>
+                </div>
+                <audio src="Oya Dasa.mp3"></audio>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="container about-section">
+        <h2>About Gaveesha Sanjana</h2>
+        <p>Gaveesha Sanjana is a Sri Lankan singer and editor. He is a student of Dharmasoka College in Ambalangoda (Sokian💙❤). He was born in Karandeniya area in Galle.</p>
+    </section>
+
+    <!-- Get in Touch Section -->
+    <section id="contact" class="container">
+        <h2>Contact US</h2>
+        <p class="section-subtitle">We'd love to hear from you!</p>
+        
+        <div class="contact-container">
+            <!-- Left Info Card -->
+            <div class="contact-info-card">
+                <div class="logo-box">
+                    <img src="232.jpg" alt="Gaveesha Sanjana Logo">
+                </div>
+                <h3>Gaveesha Sanjana Manager</h3>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>(+94) 77 465 7129</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>(+94) 76 656 0711</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>ravindralalweerasinghe@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Form -->
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Message Sent!');">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" placeholder="Your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="5" placeholder="Your message..." required></textarea>
+                </div>
+                <button type="submit" class="send-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-top">
+            <div class="footer-brand">
+                <h2>Gaveesha Sanjana</h2>
+                <p>Stay with us for listen new songs. Subscribe, Follow, Comment and Share.</p>
+            </div>
+
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#beats">Songs</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+            <div class="footer-socials">
+                <a href="https://youtube.com/@gaveesha_sanjana.artist?si=tnrZ_nQsnLdDv1z-" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.tiktok.com/@gaveesha_sanjana.artist?is_from_webapp=1&sender_device=pc" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.instagram.com/gaveesha_sanjana.artist/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-divider"></div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Gaveesha Sanjana. All rights reserved.</p>
+            <p>Design and Development by GS Creative Studio.</p>
+        </div>
+    </footer>
+
+    <!-- Hidden Background Audio -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="clip2.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- JavaScript Controls -->
+    <script>
+        const cards = document.querySelectorAll('.beat-card');
+        const bgAudio = document.getElementById('bgMusic');
+
+        // Autoplay background music
+        document.addEventListener('DOMContentLoaded', () => {
+            if (bgAudio) {
+                const playPromise = bgAudio.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(() => {
+                        const startAudio = () => {
+                            bgAudio.play();
+                            document.removeEventListener('click', startAudio);
+                            document.removeEventListener('keydown', startAudio);
+                            document.removeEventListener('touchstart', startAudio);
+                        };
+
+                        document.addEventListener('click', startAudio);
+                        document.addEventListener('keydown', startAudio);
+                        document.addEventListener('touchstart', startAudio);
+                    });
+                }
+            }
+        });
+
+        // Audio Cards Control
+        cards.forEach(card => {
+            const audio = card.querySelector('audio');
+            const playBtn = card.querySelector('.play-btn');
+            const icon = playBtn.querySelector('i');
+            const progressBar = card.querySelector('.progress-bar');
+            const progressContainer = card.querySelector('.progress-container');
+
+            playBtn.addEventListener('click', () => {
+                const isPlaying = !audio.paused;
+
+                // Stop other playing audio
+                cards.forEach(c => {
+                    const otherAudio = c.querySelector('audio');
+                    const otherBtnIcon = c.querySelector('.play-btn i');
+                    otherAudio.pause();
+                    c.classList.remove('playing');
+                    otherBtnIcon.className = 'fas fa-play';
+                });
+
+                if (!isPlaying) {
+                    audio.play();
+                    card.classList.add('playing');
+                    icon.className = 'fas fa-pause';
+                    if (bgAudio) bgAudio.pause();
+                } else {
+                    audio.pause();
+                    card.classList.remove('playing');
+                    icon.className = 'fas fa-play';
+                    if (bgAudio) bgAudio.play();
+                }
+            });
+
+            audio.addEventListener('timeupdate', () => {
+                if (audio.duration) {
+                    const progressPercent = (audio.currentTime / audio.duration) * 100;
+                    progressBar.style.width = `${progressPercent}%`;
+                }
+            });
+
+            progressContainer.addEventListener('click', (e) => {
+                const width = progressContainer.clientWidth;
+                const clickX = e.offsetX;
+                const duration = audio.duration;
+                if (duration) {
+                    audio.currentTime = (clickX / width) * duration;
+                }
+            });
+
+            audio.addEventListener('ended', () => {
+                card.classList.remove('playing');
+                icon.className = 'fas fa-play';
+                progressBar.style.width = '0%';
+                if (bgAudio) bgAudio.play();
+            });
+        });
+    </script>
+</body>
+</html>
